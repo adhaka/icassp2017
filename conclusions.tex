@@ -1,0 +1,23 @@
+\section{CONCLUSIONS}
+\label{sec:conclusions}
+This study is concerned with investigating the possibility to reduce the latency introduced by a typical CD-DNN+HMM phonetic recogniser.
+We analysed the effect of shifting the input context window to the DNN with respect to the current frame.
+Our results suggest that a context window slightly shifted back in time is superior compared to the symmetric context window used in most speech recognisers.
+However, the improvement in performance is small compared to the variability (standard deviation).
+
+More interestingly, our results suggest that shifting the context window back in time up to $5$ frames (50 ms) does not introduce noticeable degradation in the system performance.
+Larger shifts introduce a gradual but progressively steeper degradation.
+As a consequence, without modifying the ASR method in \cite{pdnn}, we can reduce the latency of the system of at least 50 ms, without any degradation in performance.
+We can reduce the latency even more if some degradation can be tolerated by the application.
+This reduction in latency, although small in size, can potentially improve the usability of ASR in many applications, especially if latency is critical as in real-time lip synchronisation for telepresence.
+
+As in any study on speech recognition, the possibility to generalise our results outside the scope of phonetic recognition needs to be verified with specific tests. For example, it would be interesting to test if systems with longer time dependencies (lexical models and more complex language models), would be affected by the window shifts in a similar way.
+
+%%% Local Variables: 
+%%% enable-local-variables: t
+%%% ispell-local-dictionary: "british"
+%%% mode: latex
+%%% TeX-master: "dnnlatency"
+%%% eval: (flyspell-mode)
+%%% eval: (flyspell-buffer)
+%%% End: 

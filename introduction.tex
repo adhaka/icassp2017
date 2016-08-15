@@ -1,0 +1,44 @@
+\section{Introduction}
+\label{sec:intro}
+In recent years, the development of deep neural models based on Restricted Boltzman machines (RBMs) pretraining has revitalised the use of artificial neural networks (ANNs) in automatic speech recognition (ASR) as well as in many other fields (see \cite{LeCunEtAl2015Nature, Schmidhuber2015NeuralNetworks} for extensive reviews).
+A key factor that determines the usability of applications based on speech recognition is the latency or lag of the system.
+In dialogue systems, e.g., long latencies may disrupt the natural turn-taking in the human-machine conversation.
+In other specific applications the lag may even be more critical.
+A typical example involves systems that use ASR to drive the lip movements of an avatar in real time to support telepresence \cite{gs:SalviEtAl2009, MuEtAl2010LipSync, LiEtAl2013ICASSP}.
+
+The latency in a typical speech recogniser based on a hybrid between Neural Networks (NNs) and Hidden Markov Models (HMMs) is determined by a number of factors:
+\begin{itemize}
+\item the hardware (sound card) introduces some lag in digitising the speech samples and making them available to the drivers. Typical values are in the order of milliseconds;
+\item the speech samples are returned by the driver in buffers of a certain size (this could be as long as half a second, but can be reduced to a few ms);
+\item in spectral based feature extraction, speech samples are grouped into windows (frames) often around 25-40 ms in length;
+\item many methods for feature extraction also compute time derivatives of the features, which require a number of frames in the past and the future. These often include three context frames for the first and three for the second derivatives for a total of 60 ms, if we assume 10 ms spaced feature vectors;
+\item the input to the neural network that estimates state probabilities may include a window of context frames. Typical values are 5 future and 5 past frames that correspond to 50 ms latency. In some cases the context may extend to the whole utterance, e.g., in some application of convolutional neural networks;
+\item the decoder that combines the probability estimates produced by the NN with the HMM time model usually requires a certain look-ahead (from a few hundreds of ms to the whole utterance).
+%\item often feature pre-processing is used for speaker/channel normalisation. This may require estimating statistics over several utterances
+\end{itemize}
+
+In \cite{gs:Salvi2006} we used a hybrid of Recurrent Neural Networks (RNNs) and HMMs that was specifically designed for low latency processing.
+The feature extraction was based on Mel Frequency Cepstral Coefficients (MFCCs) without time derivatives and the RNN did not receive any future feature frame in input, thus limiting the latency of the RNN to the size of the feature extraction window.
+The purpose of that study, however, was limited to evaluating the effect of varying the look-ahead length of the Viterbi decoder in the system.
+%The results showed that the Viterbi look-ahead could be reduced down to 100 ms without degrading the accuracy of the recogniser.
+%Shorter look-ahead lengths could be used if the application could tolerate some degradation in the accuracy. In \cite{gs:SalviEtAl2009}, a look-ahead of 30 ms was used.
+
+%This study is focused on the latency introduced by the use of context frames as input to the acoustic models.
+Nearly all recent methods that use DNN based acoustic models for ASR employ symmetric context windows as input \cite{Mohamed12, pdnn, dbn09, YaoEtAl2012SLTadaptation, DahlEtAl2011ICASSP} and are therefore affected by a certain latency.
+In this study, we want to determine the relationship between latency of the DNN model and its performance.
+In order to do this, we analyse how the performance of the recogniser proposed in \cite{pdnn} varies as the alignment of the input context window is shifted back or forward in time. 
+
+%We observe that the context window can be shifted backwards without noticeable reduction in accuracy as long as the current feature vector is included in the context window.
+%Beyond that, the performance starts to gradually but steeply degrade.
+%This study suggests that without modifying the ASR method in \cite{pdnn}, we can reduce the latency of at least 50 ms without any degradation of the results.
+%We can reduce it even more if some degradation can be tolerated by the application.
+%This reduction in latency, although small in size, can potentially improve the usability of ASR in all applications, but is especially important in those latency critical applications described above.
+
+%%% Local Variables: 
+%%% enable-local-variables: t
+%%% ispell-local-dictionary: "british"
+%%% mode: latex
+%%% TeX-master: "dnnlatency"
+%%% eval: (flyspell-mode)
+%%% eval: (flyspell-buffer)
+%%% End: 

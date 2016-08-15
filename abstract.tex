@@ -1,0 +1,18 @@
+We analyse the performance of a phonetic recogniser based on Context Dependent Deep Neural Networks (CD-DNNs) and Hidden Markov Models (HMMs) when the window of input features is not symmetric with respect to the current frame.
+The objective is to reduce the latency of the system by reducing the number of future feature frames required to estimate the current output.
+
+Our tests performed on the TIMIT database show that the performance does not degrade when the input window is shifted up to 5 frames in the past compared to common practice.
+This corresponds to improving the latency by 50 ms in our settings.
+Our tests also show that the best results (22.0\% PER) are not obtained with the symmetric window commonly employed, but with an asymmetric window with eight past and two future context frames.
+
+The reduction in latency suggested by our results is critical for specific applications such as real-time lip synchronisation for telepresence, but may also be beneficial in general applications to improve the lag in human-machine spoken interaction.
+\endinput
+
+%%% Local Variables: 
+%%% enable-local-variables: t
+%%% ispell-local-dictionary: "british"
+%%% mode: latex
+%%% TeX-master: "dnnlatency"
+%%% eval: (flyspell-mode)
+%%% eval: (flyspell-buffer)
+%%% End: 
