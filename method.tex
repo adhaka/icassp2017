@@ -1,82 +1,40 @@
 \section{METHOD}
 \label{sec:method}
-For our experiments, we use a Context Dependent Deep Neural Network (CD-DNN) trained to estimate the posterior probabilities of a set of senones given a sequence of input feature vectors. The probability estimations are then used in a Hidden Markov Model (HMM) in combination with a bigram phoneme-level language model for phonetic recognition.
-
-The set of senones and their alignment with the speech utterances in the dataset is determined by training a context dependent HMM recogniser based on Gaussian Mixture Models.
-The number of senones is reduced with decision tree based clustering.
-
-The DNN training procedure has been well described in \cite{dbn09}.
-The weights in the CD-DNN are initialised using a Deep Belief Network (DBN), that is, a stack of Restricted Boltzmann Machines (RBMs).
-The DBN is trained generatively by fitting the layers one at a time (greedily) by means of the contrastive divergence procedure.
-The final output layer in the CD-DNN is a generalised softmax (GSM) layer representing a distribution over senones.
-Given the generative initialisation, the full model is fine-tuned with back-propagation training.
-% This pre-training helps us to initialise the weights, which are then later fine-tuned by the discriminative training procedure of back-propagation.
-%We want to produce a distribution over senones (tied triphones states) conditioned on input (posterior distribution), so the output labels are the gaussian minxture components of the three states of tied triphone HMMs. The number of output labels is reduced by using decision tree clustering to
-
-The input to the model is a context window of $n$ successive frames of raw filterbank feature vectors.
-The feature vectors are normalised to zero mean and unit variance.
-% In our experiments, we basically vary the starting position of this context window while keeping n the same. We take n=11, as it has been widely reported to be sufficiently informative of the temporal pattern in the data, the features we use are the filterbank features.
-%The feature vectors in the context window are raw filterbank outputs.
-%The dimensionality of each context window is reduced using LDA.
-%The features are then de-correlated using maximum likelihood linear transform (MLLT).
-%The features are normalised for different speakers using feature Maximum Likelihood Linear Regression (fMLLR) \cite{LiEtAl2002ICSLPfMLLR}.
-%, this process is known as SAT (Speaker Adaptive Training)\cite{sat14}. 
-We use filterbank features instead of MFCCs because they have been reported to achieve good results in combination with DNNs without the need for time derivatives that would increase the latency \cite{Jaitly2014Thesis}.
-%The final features have a dimension of 40. We do not use deltas and deltas-deltas for our experiments, as calculating deltas increases the latency of the system.
-%We do not use MFCCs, as calculating MFCCs would mean taking delta and delta-delta coefficients. We also used KALDI recipes for decoding to obtain the final phoneme recognition results.
-
-We use a Viterbi decoder to generate the phoneme sequences and a phoneme-level bigram model estimated on the training set.
-The acoustic scale used in the decoder to tune acoustic and language models was optimised for each test independently on the development test and the optimal value was then used on the test set.
-The decoder follows the lattice generation and pruning approach described in \cite{danp12}.
-% A lattice is a labelled, directed acyclic graph. This graph has some states represented by the nodes, with one distinct starting state(which will always be there), there is a set of arcs between these states, where each arc has an input label, an output label and an associated cost. The input label is an identifier for the context dependent HMM state, the output label is an identifier for the word, and the cost is scaled negative acoustic log likelihood. The different paths on this acyclic graph represent the different ways in which the sentence/utterance can be framed using the given context dependent HMM states of phonemes. It is also called as a search graph. So for N frames, we will have N+1 states, and the decoding problem would be to find the best possible path in the lattice. The input label sequence of this path would represent the best state-level alignment. This graph S has a huge number of possible paths and grows exponentially with utterances, so in practice beam pruning procedure is used, which follows the rules given in \cite{danp12}. The parameters for this beam pruning are optimised on the dev set.     
+ We desire a good representation of input along with good prediction and discriminative abilities from our network.
+ The architecture of this network is similar to a regular auto-encoder with the notable difference being the addition of an additional supervised classifier in feedback in parallel with the regular decoder.  \\
+Our model is a neural network. The network contains multiple layers of encoder-decoder-classifier system. The system is trained layer by layer.
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{method}
+\includegraphics[width=\columnwidth]{model}
 \caption{Illustration of the method: A sequence of 11 speech feature frames constitutes the input to the neural network. The context window is not necessarily symmetric with respect to the current frame ($t_0$). In the illustration a shift of -3 was applied.}
-\label{fig:dnnlatnn}
+\label{fig:model}
 \end{figure}
 
-Differently from previous studies \cite{Mohamed12, pdnn, dbn09, YaoEtAl2012SLTadaptation, DahlEtAl2011ICASSP}, we vary the alignment of the context window with respect to the current frame (see Figure~\ref{fig:dnnlatnn}). We train a different recogniser for each alignment and we analyse its performance in terms of Phoneme Error Rate (PER) as a function of the window shift.
+The computational cost is linear in the number of training samples, and thus it is more efficient than graph based Semi-Supervised Learning algorithms which have $O(N^{3})$ cubic complexity. For each layer, the cost is given by a forward and backward pass through encoder, decoder and classifier. 
+In the supervised setting, the cost function is generally the cross-entropy logloss or misclassification error rate. While in unsupervised learnig, the objective is to find a different and more discriminative representation of the input data. The cost function in this case is the second degree norm of difference between original input and reconstructed input, where the input and output have the same dimensions. It has been found, that adding noise to the original input by a process called 'corruption' in which some dimensions of the input vector are randomly picked and set to zero, helps the network to learn even a better representation as described in \cite{Bengio-nips-2006}. But a hybrid approach where unsupervised learning is done in a way to aid supervised learning has not been fully explored yet, although some experiments have been done in sparse settings on document analysis \cite{ranzato-2008}. Our aim will be to add these seperate costs and train the network while minimising the combined cost at once in the same epoch. This is a non convex optimisation problem where we try to minimise the cost with respect to the weights of the layers.  When the input datapoint is not accompanied by a label, the classifier part of the layer is not updated, and the loss function simply reduces to $E_{R}$.  \\
 
-\endinput
+Different training procedures have been used with varying amount of success. In our case we will train each layer greedily one at a time. This means, that when the parameters of one layer have been found, the data is fed through that layer, and the output becomes the input for the training of the next layer, which is trained subsequently. With this training procedure, we do not need to run a backward pass through the entire network at once, which is generally highly computationally intensive. 
+The mathematical expressions for reconstruction error cost is given in Equation~\ref{eqn:cost-reconstruct}. The cost function is the same as that of a regular auto-encoder. 
 
-\subsection{Review of RBM-DNNs}
-A Resticted Boltzmann machine is a special type of generative neural network that has one layer of binary stochastic hidden units and one layer of binary stochastic visible units.
-Hidden units are fully connected to visible units, but no connection exists within hidden units or visible units.
-A deep belief networks is a stack of several RBM layers.
-The idea is to have an initialisation of all the weights of the $\mathbf{W}$ matrix, and then fine-tune the weights later by back-propagation. A weight between a visible unit $v_i$ and a hidden unit $h_j$ can be represented by $w_{ij}$. The energy of this whole configuration $(v, h)$ is given by:
+\begin{eqnarray}
+\label{eqn:cost-reconstruct}
+E_R = ||x - \hat{x}||^2   \\ 
+E_{R} = ||z_{(n-1)} - W_{D}z_{(n)} -b_{D}||_{2}^{2}.
+\end{eqnarray}
+The weight matrices, $W_{E}, W_{D}, W_{C}$ and the bias values, $b_{E}, b_{D}, b_{C}$ are then calculated by performing gradient descent of the objective function with respect to all these parameters mentioned. $W_{E}$ is the weight matrix for the encoder, $W_{D}$ is the weight matrix for decoder, $W_{C}$ is the classifier weight matrix. \\
+The cost for misclassification contributed by the classifier part of the network~\ref{fig:model-design} is given  by Equation~\ref{eqn:cost-classify}. The combined cost is given by Equation~\ref{eqn:cost-combined}. 
 \begin{equation}
-	E(v, h; \theta) = \sum_{i=1}^{V} \sum_{j=1}^{H} w_{ij} v_{i}h_{j} - \sum_{i=1}^{V}b_{i}v_{i} - \sum_{j=1}^{H}a_{j}h_{j}
+\label{eqn:cost-classify}
+E_C = -\sum{y_{i}\log h_{i}}
 \end{equation}
-where $\theta = (\mathbf{w, b, a})$ and $w_{ij}$ represents the symmetric interaction term between visible unit $i$ and hidden unit $j$ while $b_i$ and $a_j$ are the bias terms.  
-
-\subsection{Generative Training of RBMs}
-The joint likelihood of data and labels is maximised, the update rule for the visible-hidden weights is 
 \begin{equation}
-	\delta w_{ij} = \langle v_i h_j  \rangle_{\mbox{data}} - \langle v_i h_j \rangle_{\mbox{model}}
+\label{eqn:cost-combined}
+E = E_R + \alpha E_C
 \end{equation}
+where $x$ denotes original input, $\hat{x}$ represents reconstructed input, $y$ represent target labels and $h$ denotes softmax output of the last layer. This model can be iteratively applied to as many layers as we want. However, in our experiments, we use only a single layer for feature representation. We use mini-batch SGD as explained in the theory section as the optimizer over this cost function. The update of encoder weight at each iteration  is given by equation \ref{eqn:sgd}. It is important to note that the update of encoder weight $W_{E}$ is dependent both on $W_{D}$ and $W_{C}$, and the delta propagated in the backpropagation algorithm will be a linear combination of the deltas calculated in both parts. We will call our model Semi-Supervised Sparse Autoencoder (SSSAE). Another interesting thing to note is that generally in practice, autoencoders are preferred to have "tied weights". This essentially means that the decoder weight matrix is the transpose of encoder weight matrix. So in each update, as the encoder weight is modified, the decoder weight matrix is also modified such that it is the transpose of the new encoder weight matrix. This reduces the amount of free parameters available. But in our experiments, the decoder weight matrix is free and not bound by the encoder weight matrix. This makes our model more expressive at the cost of more computational overhead and possible delayed convergence.    \\
+Sparse Autoencoders have generally performed well in a lot of applications. But it has some disadvantages too. Sparse autoencoders 
+require more memory as there are more nodes in the hidden layers, and the presence of bigger matrices slows computation down. In comparison autoencoders with bottleneck architecture have much less nodes in hidden layer and have lesser time complexity. 
 
-
-The term $\langle v_{i}h_{j} \rangle_{\mbox{data}} $ is the frequency at which the visible unit and the hidden unit are simultaneously on or their value is equal to 1 as they are binary, when the visible units have been sampled from the training set, and the states of the hidden units have been determined from the above equation. The concept is to maximise the likelihood of the input data and the given out put labels, an alternative and computationally easier way of doing that is to minimise the negative likelihood of the joint distribution of the input data and output labels. The second term in the expression is the measured frequency at which the visible unit and the hidden unit are simultaneously on, when   We used the contrastive divergence technique as in \cite{hinton06} \cite{dbn09} as a means of training the network layer by layer greedily.  
-
-\subsection{Discriminative Training of DBN using backpropagation}
-The pretraining described above helps to initialise the huge number of weights we have in our deep neural network, once we are done with the generative training of the network, we tune the network with discriminative training. The training procedure we follow is the simple backpropagation algorithm. In this view, our network is a multi-layer perceptron which contains several layers of hidden layers with non linear activation functions, we denote the feature vector at time $t$ as $x_{t}$, which is a concatenation of several neighbouring frames surrounding the frame at $t$. This way, we can model the temporal nature of the speech data, and by changing this sequence of frames, we can ascertain how much it affects the final result in the form of PER (Phoneme Error Rate).
-\begin{equation}
-	\mathbf{a_{t}^{i}} = \mathbf{W_{i}}  \mathbf{x_{t}^{i}} + \mathbf{b_{i}}   
-\end{equation}
-
-
-\begin{equation}
-	\mathbf{y_{t}^{i}} = \sigma(\mathbf{a_{t}^{i}})
-\end{equation}
-
-
-
-where the weight matrix $\mathbf{W_{i}}$ is the weight matrix connecting i-1 and i-th layers and $\mathbf{b_{i}}$ is the bias term. $\mathbf{a_{t}^{i}}$ is the value of activation for each layer. The final layer is a softmax layer, and the output of each output node is taken as the posterior probability of that HMM state for the current input frame.    
-
-
-
- 
 
 %%% Local Variables: 
 %%% enable-local-variables: t

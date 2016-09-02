@@ -1,11 +1,10 @@
-We analyse the performance of a phonetic recogniser based on Context Dependent Deep Neural Networks (CD-DNNs) and Hidden Markov Models (HMMs) when the window of input features is not symmetric with respect to the current frame.
-The objective is to reduce the latency of the system by reducing the number of future feature frames required to estimate the current output.
+This work is aimed at exploring semi-supervised learning techniques to improve the performance of Automatic Speech Recognition systems. Semi-supervised learning takes advantage of unlabeled data in order to improve the quality of the extracted speech representations.
+In order to perform semi-supervised learning, we combine ideas of supervised and unsupervised learning in the context of deep neural networks.
+The proposed model tries to minimize the weighted sum of supervised and unsupervised cost functions through mini-batch stochastic gradient descent via standard backpropagation in such a way that both the optimality criteria decrease simultaneously with each update. This process is repeated until a convergence criterium is met. We find that the model in which both costs decrease and converge at roughly the same rate perform better than models in which one of the costs becomes constant or may even start to rise.
+We analyse how we can use the unlabeled data to find good representations and if we can improve the overall accuracy of the system by incorporating this knowledge.
 
-Our tests performed on the TIMIT database show that the performance does not degrade when the input window is shifted up to 5 frames in the past compared to common practice.
-This corresponds to improving the latency by 50 ms in our settings.
-Our tests also show that the best results (22.0\% PER) are not obtained with the symmetric window commonly employed, but with an asymmetric window with eight past and two future context frames.
-
-The reduction in latency suggested by our results is critical for specific applications such as real-time lip synchronisation for telepresence, but may also be beneficial in general applications to improve the lag in human-machine spoken interaction.
+This model is different from a standard auto-encoder in that the training is not wholly unsupervised, but rather a mixture. We find that an "overcomplete" architecture with more hidden nodes than the input dimension performs better than "undercomplete" architectures when including a penalty term promoting sparsity in the network.
+We show that our network performs better than a standard neural network on the semi-supervised MNIST and TIMIT tasks. We also compare the results for the TIMIT task with results obtained using graph-based semi-supervised learning and observe that the model yields competitive error rates for the task of frame-level phoneme classification.
 \endinput
 
 %%% Local Variables: 

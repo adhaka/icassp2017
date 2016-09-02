@@ -1,124 +1,12 @@
-@INPROCEEDINGS{PoveyEtAl2011ASRU-KALDI,
-         author = {Povey, Daniel and Ghoshal, Arnab and Boulianne, Gilles and Burget, Lukas and Glembek, Ondrej and Goel, Nagendra and Hannemann, Mirko and Motlicek, Petr and Qian, Yanmin and Schwarz, Petr and Silovsky, Jan and Stemmer, Georg and Vesely, Karel},
-       keywords = {ASR, Automatic Speech Recognition, GMM, HTK, SGMM},
-          month = dec,
-          title = {The Kaldi Speech Recognition Toolkit},
-      booktitle = {IEEE 2011 Workshop on Automatic Speech Recognition and Understanding},
-           year = {2011},
-      publisher = {IEEE Signal Processing Society},
-       location = {Hilton Waikoloa Village, Big Island, Hawaii, US},
-           note = {IEEE Catalog No.: CFP11SRW-USB},
+
+@Article{timit,
+author = {John Garofolo, Lori Lamel, William Fisher},
+title = {TIMIT LDC93S1},
+journal = {Philadelphia: Linguistic Data Consortium},
+year = {1993}
 }
-
-@Article {HintonEtAl2012IEEESicProc,
-abstract     = {Most current speech recognition systems use hidden Markov models (HMMs) to
-                deal with the temporal variability of speech and Gaussian mixture models (GMMs)
-                to determine how well each state of each HMM fits a frame or a short window of
-                frames of coefficients that represents the acoustic input. An alternative way to
-                evaluate the fit is to use a feed-forward neural network that takes several
-                frames of coefficients as input and produces posterior probabilities over HMM
-                states as output. Deep neural networks (DNNs) that have many hidden layers and
-                are trained using new methods have been shown to outperform GMMs on a variety of
-                speech recognition benchmarks, sometimes by a large margin. This article provides
-                an overview of this progress and represents the shared views of four research
-                groups that have had recent successes in using DNNs for acoustic modeling in
-                speech recognition.},
-author       = {Geoffrey Hinton and Li Deng and Dong Yu and Abdel-rahman Mohamed and Navdeep
-                Jaitly and Andrew Senior and Vincent Vanhoucke and Patrick Nguyen and Tara
-                Sainath and Brian Kingsbury},
-journal      = {IEEE Signal Processing Magazine},
-month        = {November},
-number       = {6},
-pages        = {82-97},
-title        = {Deep Neural Networks for Acoustic Modeling in Speech Recognition},
-url          = {http://research.microsoft.com/apps/pubs/default.aspx?id=171498},
-volume       = {29},
-year         = {2012},
-}
-
-
-@Article{Schmidhuber2015NeuralNetworks,
-  author = 	 {Jürgen Schmidhuber},
-  title = 	 {Deep Learning in Neural Networks: An Overview},
-  journal = 	 {Neural Networks},
-  year = 	 {2015},
-  OPTkey = 	 {},
-  volume = 	 {61},
-  OPTnumber = 	 {},
-  pages = 	 {85--117},
-  OPTmonth = 	 {},
-  OPTnote = 	 {},
-  OPTannote = 	 {},
-  doi = {10.1016/j.neunet.2014.09.003},
-  abstract = {In recent years, deep artificial neural networks (including recurrent ones) have won numerous contests in pattern recognition and machine learning. This historical survey compactly summarises relevant work, much of it from the previous millennium. Shallow and deep learners are distinguished by the depth of their credit assignment paths, which are chains of possibly learnable, causal links between actions and effects. I review deep supervised learning (also recapitulating the history of backpropagation), unsupervised learning, reinforcement learning & evolutionary computation, and indirect search for short programs encoding deep and large networks.
-
-As a machine learning researcher, I am obsessed with credit assignment. In case you know of references to add or correct, please send them with brief explanations to juergen@idsia.ch, preferably together with URL links to PDFs for verification. Between 16 April and 8 October 2014, drafts of this paper have already undergone massive open online peer review through public mailing lists including connectionists@cs.cmu.edu, ml-news@googlegroups.com, compneuro@neuroinf.org, genetic_programming@yahoogroups.com, rl-list@googlegroups.com, imageworld-@diku.dk, and Google+. Thanks to numerous experts for valuable comments!
-
-The contents of this paper may be used for educational and non-commercial purposes, including articles for Wikipedia and similar sites.}
-}
-
-@INPROCEEDINGS{YaoEtAl2012SLTadaptation,
-    author = {Kaisheng Yao and Dong Yu and Frank Seide and Hang Su and Li Deng and Yifan Gong},
-    title = {Adaptation of context-dependent deep neural networks for automatic speech recognition},
-    booktitle = {in Proc. SLT’12},
-    year = {2012}
-}
-
-@Article{LeCunEtAl2015Nature,
-  author = 	 {LeCun, Yann and Bengio, Yoshua and Hinton, Geoffrey},
-  title = 	 {Deep Learning},
-  journal = 	 {Nature},
-  year = 	 {2015},
-  OPTkey = 	 {},
-  volume = 	 {521},
-  number = 	 {7553},
-  pages = 	 {436--444},
-  OPTmonth = 	 {},
-  OPTnote = 	 {},
-  OPTannote = 	 {},
-  url = {http://dx.doi.org/10.1038/nature14539},
-  doi = {10.1038/nature14539}, 
-  abstract = {Deep learning allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction. These methods have dramatically improved the state-of-the-art in speech recognition, visual object recognition, object detection and many other domains such as drug discovery and genomics. Deep learning discovers intricate structure in large data sets by using the backpropagation algorithm to indicate how a machine should change its internal parameters that are used to compute the representation in each layer from the representation in the previous layer. Deep convolutional nets have brought about breakthroughs in processing images, video, speech and audio, whereas recurrent nets have shone light on sequential data such as text and speech}
-}
-
-@ARTICLE{lee89, 
-  author={Lee, K.-F. and Hon, H.-W.}, 
-  journal={Acoustics, Speech and Signal Processing, IEEE Transactions on}, 
-  title={Speaker-independent phone recognition using hidden Markov models}, 
-  year={1989}, 
-  volume={37}, 
-  number={11}, 
-  pages={1641--1648}, 
-  keywords={Markov processes;speech recognition;HMM;LPC parameters;TIMIT database;co-occurrence smoothing algorithm;expert spectrogram readers;hidden Markov models;linear-predictive-coding;multiple codebooks;speaker-independent phone recognition;speech recognition;Acoustics;Context modeling;Databases;Hidden Markov models;Humans;Knowledge engineering;Linear predictive coding;Maximum likelihood decoding;Natural languages;Speech recognition}, 
-  doi={10.1109/29.46546}, 
-  ISSN={0096-3518}, 
-  month={Nov},
-}
-
-
-@ARTICLE{hinton06,
-    author = {Geoffrey E. Hinton and Simon Osindero},
-    title = {A fast learning algorithm for deep belief nets},
-    journal = {Neural Computation},
-    year = {2006},
-    volume = {18},
-    pages = {2006}
-} 
-
-@INPROCEEDINGS{dbn09, 
-	author={Mohamed, A. and Sainath, T.N. and Dahl, G. and Ramabhadran, B. and Hinton, G.E. and Picheny, M.A.}, 
-	booktitle={Acoustics, Speech and Signal Processing (ICASSP), 2011 IEEE International Conference on}, 
-	title={Deep Belief Networks using discriminative features for phone recognition}, 
-	year={2011}, 
-	pages={5060-5063}, 
-	keywords={hidden Markov models;higher order statistics;speech recognition;DBN;MFCCs;TIMIT corpus;bigram language model;deep belief networks;discriminative features;higher-order statistical structure;multilayer generative model;phone recognition;trigram language model;Artificial neural networks;Decoding;Error analysis;Hidden Markov models;Mel frequency cepstral coefficient;Speech;Training;Deep belief networks;Discriminative feature transformation;Phone recognition}, 
-	doi={10.1109/ICASSP.2011.5947494}, 
-	ISSN={1520-6149}, 
-	month={May},}
-
-
-@MISC{theano1,
-        author = {Bastien, Frédéric and Lamblin, Pascal and Pascanu, Razvan and Bergstra, James and Goodfellow, Ian J. and Bergeron, Arnaud and Bouchard, Nicolas and Bengio, Yoshua},
+@INPROCEEDINGS{theano,
+        author = {Lamblin, Pascal and Pascanu, Razvan and Bergstra, James and Goodfellow, Ian J. and Bergeron, Arnaud and Bouchard, Nicolas and Bengio, Yoshua},
          title = {Theano: new features and speed improvements},
           year = {2012},
   howpublished = {Deep Learning and Unsupervised Feature Learning NIPS 2012 Workshop},
@@ -130,70 +18,241 @@ introduced machine learning library, and to RNNLM, a C++ library targeted at
 recurrent neural networks.}
 }
 
-@Article{gs:Salvi2006,
-  author = 	 {Giampiero Salvi},
-  title = 	 {Dynamic Behaviour of Connectionist Speech Recognition with Strong Latency Constraints},
-  journal = 	 {Speech Communication},
-  year = 	 {2006},
-  OPTkey = 	 {},
-  volume = 	 {48},
-  number = 	 {7},
-  pages = 	 {802--818},
-  month = 	 jul,
-  OPTnote = 	 {},
-  OPTannote = 	 {},
-  keywords =     {synface, asr, neural networks, mine},
-  bibliometric = {8},
-  google-scholar-id = {5804744744218397221}
+@INPROCEEDINGS{kaldi,
+         author = {Povey, Daniel and Ghoshal, Arnab and Boulianne, Gilles and Burget},
+       keywords = {ASR, Automatic Speech Recognition, GMM, HTK, SGMM},
+          month = dec,
+          title = {The Kaldi Speech Recognition Toolkit},
+      booktitle = {IEEE 2011 Workshop on Automatic Speech Recognition and Understanding},
+           year = {2011},
+      publisher = {IEEE Signal Processing Society},
+       location = {Hilton Waikoloa Village, Big Island, Hawaii, US},
+           note = {IEEE Catalog No.: CFP11SRW-USB}
+}
+@article{kingma-2014,
+  author    = {Diederik P. Kingma and
+               Danilo Jimenez Rezende and
+               Shakir Mohamed and
+               Max Welling},
+  title     = {Semi-Supervised Learning with Deep Generative Models},
+  journal   = {CoRR},
+  volume    = {abs/1406.5298},
+  year      = {2014},
+  url       = {http://arxiv.org/abs/1406.5298},
+  timestamp = {Tue, 01 Jul 2014 11:58:08 +0200},
+  biburl    = {http://dblp.uni-trier.de/rec/bib/journals/corr/KingmaRMW14},
+  bibsource = {dblp computer science bibliography, http://dblp.org}
+}
+@incollection{Bengio-nips-2006,
+  added-at = {2010-02-27T01:05:18.000+0100},
+  address = {Cambridge, MA},
+  author = {Bengio, Y. and Lamblin, P. and Popovici, D. and Larochelle, H.},
+  biburl = {http://www.bibsonomy.org/bibtex/2629899884d8653b834814d9f8c4fa395/tb2332},
+  booktitle = {Advances in Neural Information Processing Systems 19},
+  editor = {Schölkopf, B. and Platt, J. and Hoffman, T.},
+  interhash = {85cb1f82cef93c41ce1ba302b965c798},
+  intrahash = {629899884d8653b834814d9f8c4fa395},
+  keywords = {imported},
+  owner = {thierry},
+  pages = {153--160},
+  publisher = {MIT Press},
+  timestamp = {2010-02-27T01:05:19.000+0100},
+  title = {Greedy layer-wise training of deep networks},
+  year = 2007
+}
+@inproceedings{mohamed-2009,
+  added-at = {2011-12-31T00:00:00.000+0100},
+  author = {rahman Mohamed, Abdel and Sainath, Tara N. and Dahl, George E. and Ramabhadran, Bhuvana and Hinton, Geoffrey E. and Picheny, Michael A.},
+  biburl = {http://www.bibsonomy.org/bibtex/2da659dbd30a602225c1e5736e0cb14f8/dblp},
+  booktitle = {ICASSP},
+  ee = {http://dx.doi.org/10.1109/ICASSP.2011.5947494},
+  interhash = {eec6b4171c669daeec12b9cd426d10f2},
+  intrahash = {da659dbd30a602225c1e5736e0cb14f8},
+  isbn = {978-1-4577-0539-7},
+  keywords = {dblp},
+  pages = {5060-5063},
+  publisher = {IEEE},
+  timestamp = {2012-01-03T11:35:33.000+0100},
+  title = {Deep Belief Networks using discriminative features for phone recognition.},
+  url = {http://dblp.uni-trier.de/db/conf/icassp/icassp2011.html#MohamedSDRHP11},
+  year = 2011
+}
+@inproceedings{graves-2013,
+  added-at = {2013-11-02T00:00:00.000+0100},
+  author = {Graves, Alex and rahman Mohamed, Abdel and Hinton, Geoffrey E.},
+  biburl = {http://www.bibsonomy.org/bibtex/28bb8304f2b2e3a21c4c40719b0c60dd5/dblp},
+  booktitle = {ICASSP},
+  //crossref = {conf/icassp/2013},
+  ee = {http://dx.doi.org/10.1109/ICASSP.2013.6638947},
+  interhash = {1cd74ce6e8dae51149cd2b2d0f08f81a},
+  intrahash = {8bb8304f2b2e3a21c4c40719b0c60dd5},
+  keywords = {dblp},
+  pages = {6645-6649},
+  publisher = {IEEE},
+  timestamp = {2013-11-05T11:36:31.000+0100},
+  title = {Speech recognition with deep recurrent neural networks.},
+  url = {http://dblp.uni-trier.de/db/conf/icassp/icassp2013.html#GravesMH13},
+  year = 2013
+}
+@ARTICLE{Ossama-2013,
+    author = {Ossama, Abdel-Hamid and Abdel-rahman, Mohamed and Hui, Jiang and Li, Deng and Gerald, Penn and Dong, Yu},
+    title = {Convolutional Neural Networks for Speech Recognition},
+    journal = {TASLP 2014},
+    year = {2014}
+}
+@inproceedings{Rosenberg-2005,
+  added-at = {2005-02-09T00:00:00.000+0100},
+  author = {Rosenberg, Chuck and Hebert, Martial and Schneiderman, Henry},
+  biburl = {http://www.bibsonomy.org/bibtex/2603b54c9aed7e4a08da8152e16ee433f/dblp},
+  booktitle = {WACV/MOTION},
+  //crossref = {conf/wacv/2005},
+  date = {2005-02-09},
+  description = {dblp},
+  ee = {http://doi.ieeecomputersociety.org/10.1109/ACVMOT.2005.107},
+  interhash = {39f1c791477e4374a1abb427f3dc2ab4},
+  intrahash = {603b54c9aed7e4a08da8152e16ee433f},
+  isbn = {0-7695-2271-8},
+  keywords = {dblp},
+  pages = {29-36},
+  publisher = {IEEE Computer Society},
+  timestamp = {2005-02-09T00:00:00.000+0100},
+  title = {Semi-Supervised Self-Training of Object Detection Models.},
+  url = {http://dblp.uni-trier.de/db/conf/wacv/wacv2005.html#RosenbergHS05},
+  year = 2005
+}
+@inproceedings{ranzato-2008,
+  added-at = {2008-08-14T00:00:00.000+0200},
+  author = {Ranzato, Marc'Aurelio and Szummer, Martin},
+  biburl = {http://www.bibsonomy.org/bibtex/24591f70d1aa774076772958e5600a02b/dblp},
+  booktitle = {ICML},
+  //crossref = {conf/icml/2008},
+  date = {2008-08-14},
+  description = {dblp},
+  editor = {Cohen, William W. and McCallum, Andrew and Roweis, Sam T.},
+  ee = {http://doi.acm.org/10.1145/1390156.1390256},
+  interhash = {234e5337da724c260804fbb7105f6cf9},
+  intrahash = {4591f70d1aa774076772958e5600a02b},
+  isbn = {978-1-60558-205-4},
+  keywords = {dblp},
+  pages = {792-799},
+  publisher = {ACM},
+  series = {ACM International Conference Proceeding Series},
+  timestamp = {2008-08-15T11:51:19.000+0200},
+  title = {Semi-supervised learning of compact document representations with deep networks.},
+  url = {http://dblp.uni-trier.de/db/conf/icml/icml2008.html#RanzatoS08},
+  volume = 307,
+  year = 2008
+}
+@inproceedings{gregor-2010,
+  added-at = {2010-09-06T00:00:00.000+0200},
+  author = {Gregor, Karol and LeCun, Yann},
+  biburl = {http://www.bibsonomy.org/bibtex/2d75e0eb0057041e713d4ddb1f8037847/dblp},
+  booktitle = {ICML},
+  //crossref = {conf/icml/2010},
+  editor = {Fürnkranz, Johannes and Joachims, Thorsten},
+  ee = {http://www.icml2010.org/papers/449.pdf},
+  interhash = {c4ed08d5ee7e76ed6fc51ee58ee9eed7},
+  intrahash = {d75e0eb0057041e713d4ddb1f8037847},
+  keywords = {dblp},
+  pages = {399-406},
+  publisher = {Omnipress},
+  timestamp = {2015-06-19T11:36:45.000+0200},
+  title = {Learning Fast Approximations of Sparse Coding.},
+  url = {http://dblp.uni-trier.de/db/conf/icml/icml2010.html#GregorL10},
+  year = 2010
+}
+@inproceedings{liu-2013,
+  added-at = {2014-01-27T00:00:00.000+0100},
+  author = {Liu, Yuzong and Kirchhoff, Katrin},
+  biburl = {http://www.bibsonomy.org/bibtex/221f588d690c1846e336234059e6e1369/dblp},
+  booktitle = {INTERSPEECH},
+  //crossref = {conf/interspeech/2013},
+  editor = {Bimbot, Frédéric and Cerisara, Christophe and Fougeron, Cécile and Gravier, Guillaume and Lamel, Lori and Pellegrino, François and Perrier, Pascal},
+  ee = {http://www.isca-speech.org/archive/interspeech_2013/i13_1840.html},
+  interhash = {8c8040e1d8b0d19ae798407d1b3d21e4},
+  intrahash = {21f588d690c1846e336234059e6e1369},
+  keywords = {dblp},
+  pages = {1840-1843},
+  publisher = {ISCA},
+  timestamp = {2014-01-28T11:37:31.000+0100},
+  title = {Graph-based semi-supervised learning for phone and segment classification.},
+  url = {http://dblp.uni-trier.de/db/conf/interspeech/interspeech2013.html#LiuK13},
+  year = 2013
+}
+@inproceedings{liu-2014,
+author = "Liu, Yuzong and Kirchhoff, Katrin",
+title = "Graph-based semi-supervised acoustic modeling in {DNN}-based speech recognition", 
+booktitle = "Proceedings of the IEEE Spoken Language Technology Workshop (SLT)",
+year = "2014",
+pages = "177--182",
+}
+@inproceedings{coates-2011,
+  abstract = {A great deal of research has focused on algorithms for learning features from unlabeled data. Indeed, much progress has been made on benchmark datasets like NORB and CIFAR-10 by employing increasingly complex unsupervised learning algorithms and deep models. In this paper, however, we show that several simple factors, such as the number of hidden nodes in the model, may be more important to achieving high performance than the learning algorithm or the depth of the model. Specifically, we will apply several off-the-shelf feature learning algorithms (sparse auto-encoders, sparse RBMs, K-means clustering, and Gaussian mixtures) to CIFAR-10, NORB, and STL datasets using only single-layer networks. We then present a detailed analysis of the effect of changes in the model setup: the receptive field size, number of hidden nodes (features), the step-size ("stride") between extracted features, and the effect of whitening. Our results show that large numbers of hidden nodes and dense feature extraction are critical to achieving high performance - so critical, in fact, that when these parameters are pushed to their limits, we achieve state-of-the-art performance on both CIFAR-10 and NORB using only a single layer of features. More surprisingly, our best performance is based on K-means clustering, which is extremely fast, has no hyper-parameters to tune beyond the model structure itself, and is very easy to implement. Despite the simplicity of our system, we achieve accuracy beyond all previously published results on the CIFAR-10 and NORB datasets (79.6% and 97.2% respectively).},
+  added-at = {2013-02-20T09:03:53.000+0100},
+  author = {Coates, A. and Lee, H. and Ng, A.Y.},
+  biburl = {http://www.bibsonomy.org/bibtex/2bcb2c1fd335ae57362cdf348ff727589/jaeschke},
+  booktitle = {Proceedings of the Fourteenth International Conference on Artificial Intelligence and Statistics},
+  editor = {Gordon, Geoffrey and Dunson, David and Dudík, Miroslav},
+  interhash = {46cfb4b5b1c16c79a966512e07f67158},
+  intrahash = {bcb2c1fd335ae57362cdf348ff727589},
+  keywords = {feature learning machine ml unsupervised},
+  pages = {215--223},
+  publisher = {JMLR W\&CP},
+  series = {JMLR Workshop and Conference Proceedings},
+  timestamp = {2014-07-28T15:57:31.000+0200},
+  title = {An analysis of single-layer networks in unsupervised feature learning},
+  url = {http://jmlr.csail.mit.edu/proceedings/papers/v15/coates11a.html},
+  volume = 15,
+  year = 2011
+}
+@inproceedings{pitelis-2014,
+  added-at = {2016-04-26T00:00:00.000+0200},
+  author = {Pitelis, Nikolaos and Russell, Chris and Agapito, Lourdes},
+  biburl = {http://www.bibsonomy.org/bibtex/2eb84addb22c8ad0e1434d01196f2f1f7/dblp},
+  booktitle = {ECML/PKDD (2)},
+  //crossref = {conf/pkdd/2014-2},
+  editor = {Calders, Toon and Esposito, Floriana and Hüllermeier, Eyke and Meo, Rosa},
+  ee = {http://dx.doi.org/10.1007/978-3-662-44851-9_36},
+  interhash = {0c4390a91c9f78615186a74529bede28},
+  intrahash = {eb84addb22c8ad0e1434d01196f2f1f7},
+  isbn = {978-3-662-44850-2},
+  keywords = {dblp},
+  pages = {565-580},
+  publisher = {Springer},
+  series = {Lecture Notes in Computer Science},
+  timestamp = {2016-04-27T11:48:47.000+0200},
+  title = {Semi-supervised Learning Using an Unsupervised Atlas.},
+  url = {http://dblp.uni-trier.de/db/conf/pkdd/pkdd2014-2.html#PitelisRA14},
+  volume = 8725,
+  year = 2014
+}
+@incollection{Alexnet-2012,
+title = {ImageNet Classification with Deep Convolutional Neural Networks},
+author = {Alex Krizhevsky and Sutskever, Ilya and Geoffrey E. Hinton},
+booktitle = {Advances in Neural Information Processing Systems 25},
+editor = {F. Pereira and C. J. C. Burges and L. Bottou and K. Q. Weinberger},
+pages = {1097--1105},
+year = {2012},
+publisher = {Curran Associates, Inc.},
+url = {http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf}
 }
 
-@Article{gs:SalviEtAl2009,
-  author = 	 {Giampiero Salvi and Jonas Beskow and Samer {Al Moubayed} and Björn Granström},
-  title = 	 {{S}yn{F}ace --- Speech-driven Facial Animation for Virtual Speech-reading Support},
-  journal = 	 {EURASIP Journal on Audio, Speech, and Music Processing},
-  year = 	 {2009},
-  OPTkey = 	 {},
-  OPTvolume = 	 {2009},
-  OPTnumber = 	 {2009},
-  OPTpages = 	 {},
-  month = 	 sep,
-  OPTnote = 	 {},
-  OPTannote = 	 {},
-  bibliometric = {17},
-  google-scholar-id = {}
+@misc{mnist,
+  added-at = {2010-06-28T21:16:30.000+0200},
+  author = {LeCun, Yann and Cortes, Corinna},
+  biburl = {http://www.bibsonomy.org/bibtex/2935bad99fa1f65e03c25b315aa3c1032/mhwombat},
+  groups = {public},
+  howpublished = {http://yann.lecun.com/exdb/mnist/},
+  interhash = {21b9d0558bd66279df9452562df6e6f3},
+  intrahash = {935bad99fa1f65e03c25b315aa3c1032},
+  keywords = {MSc _checked character_recognition mnist network neural},
+  lastchecked = {2016-01-14 14:24:11},
+  timestamp = {2016-01-14T15:24:40.000+0100},
+  title = {{MNIST} handwritten digit database},
+  url = {http://yann.lecun.com/exdb/mnist/},
+  username = {mhwombat},
+  year = 2010
 }
-
-@INPROCEEDINGS{MuEtAl2010LipSync, 
-  author={Kaihui Mu and Jianhua Tao and Jianfeng Che and Minghao Yang}, 
-  booktitle={Universal Communication Symposium (IUCS), 2010 4th International}, 
-  title={Real-time speech-driven lip synchronization}, 
-  year={2010}, 
-  pages={378--382}, 
-  keywords={cepstral analysis;computer animation;human computer interaction;rendering (computer graphics);speech processing;MPEG-4;Mel-frequency cepstral coefficients;acoustic speech signal;collaborative filtering;data-driven approach;facial animation parameter;human-computer interaction;lip movement rendering;multimodal database collection;real-time speech-driven lip synchronization processing;speech visual representation;Acoustics;Face;Hidden Markov models;Speech;Synchronization;Transform coding;Visualization;FAP;MFCC;collaborative filtering;real-time speech-driven lip synchronization}, 
-  doi={10.1109/IUCS.2010.5666250}, 
-  month={Oct}
-}
-
-@INPROCEEDINGS{LiEtAl2013ICASSP, 
-  author={Hao Li and Minghao Yang and Jianhua Tao}, 
-  booktitle={Acoustics, Speech and Signal Processing (ICASSP), 2013 IEEE International Conference on}, 
-  title={Speaker-independent lips and tongue visualization of vowels}, 
-  year={2013}, 
-  pages={8106-8110}, 
-  keywords={geometry;learning (artificial intelligence);speech synthesis;2D geometric model;DRD;EMA data;acoustic-to-articulatory inversion mapping;directional relative displacement;electromagnetic articulograph data;multispeakers acoustic-articulatory data;speaker-independent lips visualization;speaker-independent tongue visualization;speech-driven lips animation synthesis scheme;speech-driven tongue animation synthesis scheme;vowel data;Acoustics;Animation;Coils;Lips;Speech;Tongue;Vectors;acoustic-to-articulatory inversion;articulatory models;electromagnetic articulograph;speech visualization}, 
-  doi={10.1109/ICASSP.2013.6639244}, 
-  ISSN={1520-6149}, 
-  month={May}
-}
-
-@ARTICLE{Mohamed12,
-    author = {Abdel-rahman Mohamed and George E. Dahl and Geoffrey Hinton},
-    title = {Acoustic modeling using deep belief networks},
-    journal = {IEEE Trans. Audio, Speech, Lang. Process},
-    year = {2012},
-    pages = {14--22}
-}
-
 @ARTICLE{pdnn,
    author = {{Miao}, Y.},
     title = "{Kaldi+PDNN: Building DNN-based ASR Systems with Kaldi and PDNN}",
@@ -207,70 +266,132 @@ archivePrefix = "arXiv",
    adsurl = {http://adsabs.harvard.edu/abs/2014arXiv1401.6984M},
   adsnote = {Provided by the SAO/NASA Astrophysics Data System}
 }
+@ARTICLE{lee-1989,
+author={K. F. Lee and H. W. Hon},
+journal={IEEE Transactions on Acoustics, Speech, and Signal Processing},
+title={Speaker-independent phone recognition using hidden Markov models},
+year={1989},
+volume={37},
+number={11},
+pages={1641-1648},
+keywords={Markov processes;speech recognition;HMM;LPC parameters;TIMIT database;co-occurrence smoothing algorithm;expert spectrogram readers;hidden Markov models;linear-predictive-coding;multiple codebooks;speaker-independent phone recognition;speech recognition;Acoustics;Context modeling;Databases;Hidden Markov models;Humans;Knowledge engineering;Linear predictive coding;Maximum likelihood decoding;Natural languages;Speech recognition},
+doi={10.1109/29.46546},
+ISSN={0096-3518},
+month={Nov},}
 
-
-@INPROCEEDINGS{sat14,
-author={Ochiai, T. and Matsuda, S. and Xugang Lu and Hori, C. and Katagiri, S.},
-booktitle={Acoustics, Speech and Signal Processing (ICASSP), 2014 IEEE International Conference on},
-title={Speaker Adaptive Training using Deep Neural Networks},
-year={2014},
-pages={6349-6353},
-keywords={Gaussian processes;hidden Markov models;learning (artificial intelligence);neural nets;speaker recognition;Gaussian mixture models;HMM speech recognizer;SAT;SD module;baseline SI DNN-HMM recognizer;deep neural networks;hidden-Markov-model;seven-layer DNN;speaker adaptation scheme;speaker adaptive training;speaker-dependent module;speaker-independent recognizer development;training scheme;Acoustics;Hidden Markov models;Silicon;Speech;Speech recognition;Training;Vectors;Deep Neural Network;Speaker Adaptative Training},
-doi={10.1109/ICASSP.2014.6854826},
-month={May},}
-
-@INPROCEEDINGS{DahlEtAl2011ICASSP, 
-author={Dahl, G.E. and Dong Yu and Li Deng and Acero, A.}, 
-booktitle={Acoustics, Speech and Signal Processing (ICASSP), 2011 IEEE International Conference on}, 
-title={Large vocabulary continuous speech recognition with context-dependent DBN-HMMS}, 
-year={2011}, 
-pages={4688-4691}, 
-keywords={Gaussian distribution;belief networks;hidden Markov models;speech recognition;Bing mobile voice search task;Gaussian mixture model;ML criteria;MPE;context-dependent DBN-HMMS;context-independent deep belief network;hidden Markov model hybrid architecture;large vocabulary continuous speech recognition;maximum likelihood criteria;minimum phone error rate;Accuracy;Acoustics;Artificial neural networks;Hidden Markov models;Speech recognition;Training;Vocabulary;DBN-HMM;LVCSR;Speech recognition;context-dependent phone;deep belief network}, 
-doi={10.1109/ICASSP.2011.5947401}, 
-ISSN={1520-6149}, 
-month={May},}
-
-@INPROCEEDINGS{danp12, 
-author={Povey, D. and Hannemann, M. and Boulianne, G. and Burget, L. and Ghoshal, A. and Janda, M. and Karafiat, M. and Kombrink, S. and Motlicek, P. and Yanmin Qian and Riedhammer, K. and Vesely, K. and Ngoc Thang Vu}, 
-booktitle={Acoustics, Speech and Signal Processing (ICASSP), 2012 IEEE International Conference on}, 
-title={Generating exact lattices in the WFST framework}, 
-year={2012}, 
-pages={4213-4216}, 
-keywords={decoding;hidden Markov models;transducers;HMM transitions;HMM-state-level alignments;WFST decoders;WFST framework;alternative transcriptions;exact lattice generation;input-symbol-sequence;natural properties;special determinization;state-level lattice;utterance;weighted finite state transducer;word sequence;Acoustic beams;Acoustics;Decoding;Educational institutions;Hidden Markov models;Lattices;Viterbi algorithm;Lattice Generation;Speech Recognition}, 
-doi={10.1109/ICASSP.2012.6288848}, 
-ISSN={1520-6149}, 
-month={March},}
-
-@InProceedings{LiEtAl2002ICSLPfMLLR,
-  author = 	 {Yongxin Li and Hakan Erdogan and Yuqing Gao and Etienne Marcheret},
-  title = 	 {Incremental On-Line Feature Space MLLR Adaptation for Telephony Speech Recognition},
-  OPTcrossref =  {},
-  OPTkey = 	 {},
-  OPTbooktitle = {Proceedings of ICSLP},
-  year = 	 {2002},
-  OPTeditor = 	 {},
-  OPTvolume = 	 {},
-  OPTnumber = 	 {},
-  OPTseries = 	 {},
-  pages = 	 {1417--1420},
-  OPTmonth = 	 {},
-  address = 	 {Denver, Colorado, USA},
-  OPTorganization = {},
-  OPTpublisher = {},
-  OPTnote = 	 {},
-  OPTannote = 	 {}
+@INPROCEEDINGS{labiak-2011,
+    author = {John Labiak and Karen Livescu},
+    title = {Nearest neighbors with learned distances for phonetic frame classification},
+    booktitle = {Interspeech},
+    year = {2011}
 }
 
-@PhdThesis{Jaitly2014Thesis,
-  author = 	 {Navdeep Jaitly},
-  title = 	 {Exploring Deep Learning Methods for Discovering Features in Speech Signals},
-  school = 	 {University of Toronto},
-  year = 	 {2014},
-  OPTkey = 	 {},
-  OPTtype = 	 {},
-  OPTaddress = 	 {},
-  OPTmonth = 	 {},
-  OPTnote = 	 {},
-  OPTannote = 	 {}
+@INPROCEEDINGS{joachims-1999,
+  abstract = {This paper introduces Transductive Support Vector Machines (TSVMs) for text classification. While regular Support Vector Machines (SVMs) try to induce a general decision function for a learning task, Transductive Support Vector Machines take into account a particular test set and try to minimize misclassifications of just those particular examples. The paper presents an analysis of why TSVMs are well suited for text classification. These theoretical findings are supported by experiments on three test collections. The experiments show substantial improvements over inductive methods, especially for small training sets, cutting the number of labeled training examples down to a twentieth on some tasks. This work also proposes an algorithm for training TSVMs efficiently, handling 10,000 examples and more.},
+  added-at = {2008-05-02T15:34:36.000+0200},
+  address = {Bled, SL},
+  author = {Joachims, Thorsten},
+  biburl = {http://www.bibsonomy.org/bibtex/27cf3e7981cac898c1745418db83e0fd6/jil},
+  booktitle = {Proceedings of {ICML}-99, 16th International Conference on Machine Learning},
+  editor = {Bratko, Ivan and Dzeroski, Saso},
+  interhash = {7b7737625402ab3e8db5f53d1de716d6},
+  intrahash = {7cf3e7981cac898c1745418db83e0fd6},
+  keywords = {seminar svm svmlight titov transductive},
+  pages = {200--209},
+  psurl = {http://www.joachims.org/publications/joachims_99c.ps.gz},
+  publisher = {Morgan Kaufmann Publishers, San Francisco, US},
+  timestamp = {2013-11-23T20:11:51.000+0100},
+  title = {Transductive Inference for Text Classification using Support Vector Machines},
+  url = {http://www-connex.lip6.fr/~amini/RelatedWorks/Joa99.pdf},
+  year = 1999
 }
+@incollection{weston-2012,
+  added-at = {2013-09-09T00:00:00.000+0200},
+  author = {Weston, Jason and Ratle, Frédéric and Mobahi, Hossein and Collobert, Ronan},
+  biburl = {http://www.bibsonomy.org/bibtex/228bab8aae5c8db1ecc6871244dd155d6/dblp},
+  booktitle = {Neural Networks: Tricks of the Trade (2nd ed.)},
+  editor = {Montavon, Grégoire and Orr, Genevieve B. and Müller, Klaus-Robert},
+  ee = {http://dx.doi.org/10.1007/978-3-642-35289-8_34},
+  interhash = {d0d2176ecbc83b58e854d421b2f45b28},
+  intrahash = {28bab8aae5c8db1ecc6871244dd155d6},
+  isbn = {978-3-642-35288-1},
+  keywords = {dblp},
+  pages = {639-655},
+  publisher = {Springer},
+  series = {Lecture Notes in Computer Science},
+  timestamp = {2013-09-10T11:35:16.000+0200},
+  title = {Deep Learning via Semi-supervised Embedding.},
+  url = {http://dblp.uni-trier.de/db/series/lncs/lncs7700.html#WestonRMC12},
+  volume = 7700,
+  year = 2012
+}
+@inproceedings{zhu-2004,
+  added-at = {2014-12-11T00:00:00.000+0100},
+  author = {Zhu, Xiaojin and Kandola, Jaz S. and Ghahramani, Zoubin and Lafferty, John D.},
+  biburl = {http://www.bibsonomy.org/bibtex/27f8106d095eaf24cd25381da1b6f8ca6/dblp},
+  booktitle = {NIPS},
+  ee = {http://papers.nips.cc/paper/2702-nonparametric-transforms-of-graph-kernels-for-semi-supervised-learning},
+  interhash = {b4bf9cab759218ca7fb323c495d1e82e},
+  intrahash = {7f8106d095eaf24cd25381da1b6f8ca6},
+  keywords = {dblp},
+  pages = {1641-1648},
+  timestamp = {2015-06-19T08:37:50.000+0200},
+  title = {Nonparametric Transforms of Graph Kernels for Semi-Supervised Learning.},
+  year = 2004
+}
+@techreport{zhu-2002,
+  abstract = {We investigate the use of unlabeled data to help labeled data in classification.
+We propose a simple iterative algorithm, label propagation, to
+propagate labels through the dataset along high density areas defined by
+unlabeled data. We analyze the algorithm, show its solution, and its connection
+to several other algorithms. We also show how to learn parameters
+by minimum spanning tree heuristic and entropy minimization, and
+the algorithm’s ability to perform feature selection. Experiment results
+are promising.},
+  added-at = {2006-06-16T10:34:37.000+0200},
+  author = {Zhu, Xiaojin and Ghahramani, Zoubin},
+  biburl = {http://www.bibsonomy.org/bibtex/25ddd451b8facd00d9493358a3db9b733/ldietz},
+  citeulike-article-id = {310457},
+  interhash = {b45f08fc36ee3a972a246ac1716aab15},
+  intrahash = {5ddd451b8facd00d9493358a3db9b733},
+  keywords = {clustering contraint},
+  priority = {4},
+  timestamp = {2006-06-16T10:34:37.000+0200},
+  title = {Learning from Labeled and Unlabeled Data with
+Label Propagation},
+  url = {http://www.scholar.google.com/url?sa=U\&#38;q=http://www.cs.cmu.edu/~zhuxj/pub/propagate.ps.gz},
+  year = 2002
+}
+@ARTICLE{subramanya-2011,
+    author = {Amarnag Subramanya and Jeff Bilmes and Yoshua Bengio},
+    title = {Semi-supervised learning with measure propagation},
+    journal = {Journal of Machine Learning. Research},
+    year = {2011},
+    pages = {3311--3370}
+}
+
+@inproceedings{talukdar-2009,
+  added-at = {2009-08-31T00:00:00.000+0200},
+  author = {Talukdar, Partha Pratim and Crammer, Koby},
+  biburl = {http://www.bibsonomy.org/bibtex/2c4c6b1bc882fcd44c8346aa511d5a018/dblp},
+  booktitle = {ECML/PKDD (2)},
+  date = {2009-08-31},
+  description = {dblp},
+  editor = {Buntine, Wray L. and Grobelnik, Marko and Mladenic, Dunja and Shawe-Taylor, John},
+  ee = {http://dx.doi.org/10.1007/978-3-642-04174-7_29},
+  interhash = {3b96cb38ec723f81bcf7e6e4a8967cea},
+  intrahash = {c4c6b1bc882fcd44c8346aa511d5a018},
+  isbn = {978-3-642-04173-0},
+  keywords = {dblp},
+  pages = {442-457},
+  publisher = {Springer},
+  series = {Lecture Notes in Computer Science},
+  timestamp = {2009-09-01T11:35:03.000+0200},
+  title = {New Regularized Algorithms for Transductive Learning.},
+  url = {http://dblp.uni-trier.de/db/conf/pkdd/pkdd2009-2.html#TalukdarC09},
+  volume = 5782,
+  year = 2009
+}
+
+
 

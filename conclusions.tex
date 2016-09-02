@@ -1,17 +1,13 @@
 \section{CONCLUSIONS}
 \label{sec:conclusions}
-This study is concerned with investigating the possibility to reduce the latency introduced by a typical CD-DNN+HMM phonetic recogniser.
-We analysed the effect of shifting the input context window to the DNN with respect to the current frame.
-Our results suggest that a context window slightly shifted back in time is superior compared to the symmetric context window used in most speech recognisers.
-However, the improvement in performance is small compared to the variability (standard deviation).
 
-More interestingly, our results suggest that shifting the context window back in time up to $5$ frames (50 ms) does not introduce noticeable degradation in the system performance.
-Larger shifts introduce a gradual but progressively steeper degradation.
-As a consequence, without modifying the ASR method in \cite{pdnn}, we can reduce the latency of the system of at least 50 ms, without any degradation in performance.
-We can reduce the latency even more if some degradation can be tolerated by the application.
-This reduction in latency, although small in size, can potentially improve the usability of ASR in many applications, especially if latency is critical as in real-time lip synchronisation for telepresence.
+We can observe from our experiments that our algorithm based on learning sparse representation of data simultaneously with labeled discriminative classification, performed better than standard "supervised" training of the neural networks in terms of frame-level phoneme classification. Nevertheless, it is also important to note that, most standard and industry-grade speech processing systems need to handle units like phones, words that are inherently of variable length. In other-words, improvement in accuracy of frame-level based phoneme classification might be a good indicator, but it cannot be definitely said, that overall speech recognition accuracy when measured in terms of word-recognition will definitely increase. Though, most researchers in the community still focus on frame-level phoneme accuracy as the first goal, before moving on to the harder challenge of word recognition and variable-length "large" speech segments like sentences. 
 
-As in any study on speech recognition, the possibility to generalise our results outside the scope of phonetic recognition needs to be verified with specific tests. For example, it would be interesting to test if systems with longer time dependencies (lexical models and more complex language models), would be affected by the window shifts in a similar way.
+Regarding the choice of the percentage of labeled data at which the experiments were performed, we can argue that in nature in general, we always find an abundance of unlabeled data, so it becomes more important for us to investigate our models when the percentage of labeled data is very low. Also, as the percentage of labeled datapoints increase, the accuracy starts to saturate, and any subsequent increase in percentage of labeled examples does not bring in much of improvement in the accuracy as observed in the lower percentages of data. This seems reasonable, as after a certain percentage of data, the model knows the input distribution almost completely, and only small improvements in knowledge are observed henceforth. The size of the labeled points for our experiments is varied from 1\% to 30\% of the entire training set frames count.
+
+This thesis also discussed the pros and cons of graph-based semisupervised Learning, which is much more computationally intensive, and even then our algorithm gives competitive result in comparison to the best performing GBL.
+
+There are many exciting ideas and research directions, in which this work could be extended. Firstly, we could use feature-bank features on feature processing from raw waveform. Though MFCCs and their deltas have been effective as features for phoneme recognition, they are highly compressed. Using feature banks instead might give a higher accuracy. One objective of using MFCCs was to compare with the results of \cite{liu-2013}, who also have used MFCCs for GBL Semi-Supervised Learning. As discussed above, a logical next step would be to apply the algorithm for segment classification task. That way, it could be definitely said that, the algorithm is good for speech processing and recognition applications. 
 
 %%% Local Variables: 
 %%% enable-local-variables: t
