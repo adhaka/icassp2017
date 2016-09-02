@@ -1,0 +1,62 @@
+\section{RESULTS}
+Table~\ref{table:timit} and Figure~\ref{fig:timitacc} show the frame-level classification accuracy rates for a neural network and a single layer Semi-Supervised sparse auto-encoder for varying percentage of labeled data. As in MNIST, the hyper-parameters are tuned using the validation set. The neural network contains 2000 units in the hidden layer as in~\cite{liu-2013,labiak-2011}. We observed that the results we obtain match the reported results in the literature mentioned. We used Adaptive Learning Rate scheme with linear decay, in which the learning rate decays linearly after a certain number of epochs. 
+The table shows both validation set accuracy and test set accuracy respectively separated by a comma. The first value in the column is valid set accuracy, and the second value is the test accuracy. 
+
+
+\begin{table}[h!]
+\centering
+  %\begin{tabular} {|p{2cm} p{2cm} p{3.5cm} p{3cm} p{1.5cm}|}
+  \begin{tabular} {|rrccccc|}
+    \hline\hline
+    \multicolumn{7}{|c|}{Results on TIMIT} \\
+    \hline
+   \multicolumn{2}{|c}{Labelled Obs.} & \multicolumn{2}{c}{Neural Network} & \multicolumn{2}{c}{SSSAE} & $\alpha$  \\ [0.4ex]
+   \% & \# & valid. acc. & test acc. & valid acc. & test acc. & \\
+    \hline
+  1 & 10688 & 57.46 & 57.93 & 59.65 & 59.84 & 100 \\
+  3 & 32065 & 61.71 & 61.31 & 64.12 & 64.20 & 150 \\
+  5 & 53441 & 63.20 & 63.30 & 65.44 & 65.71 & 150 \\  
+  10 & 106881 & 65.78 & 65.82 & 66.96 & 67.03 & 400 \\
+  20 & 213763 & 68.02 & 67.80 & 69.31 & 69.18 & 600 \\
+    30 & 320644 & 68.02 & 67.80 & 69.80 & 69.65 & 900 \\
+    \hline\hline
+  \end{tabular}
+    \caption{Results on classification of HMM state frames in validation set and test set on a neural network and our model on TIMIT with different percentages of labeled data in training. Total number of frames is 1068818. The value of $\alpha$ optimized on validation set is given in parentheses.}
+    \label{table:timit}
+\end{table}
+
+In Table~\ref{table:timitssl}, we compare the performance of our system with respect to frame-level phonetic classification to a simple neural network, and to graph based Semi-supervised Learning model as published in \cite{liu-2013} on just 10\% labeled data and observe that our system performs better than all the techniques mentioned except pMP algorithm. 
+\begin{table}[h!]
+\centering
+  \begin{tabular}{ |p{3cm}|p{3cm}|p{3cm}|  }
+    \hline
+    \multicolumn{3}{|c|}{Amount of Training Data} \\
+    \hline
+    System & 10\% & 30\%  \\ [1ex]
+    \hline\hline
+  NN &  65.94 &  69.24 \\
+    \hline
+    LP & 65.47 & 69.24 \\
+    MP & 65.48 & 69.24 \\
+    MAD & 66.53 &  70.25 \\
+    pMP & 67.22 & 71.06 \\
+    \hline\hline
+  SSSAE & \textbf{67.03} & \textbf{69.65} \\
+    \hline
+    \hline
+  \end{tabular}
+    \caption{Accuracy rates (\%) for frame-based phoneme classification on TIMIT for the baseline(MLP), the four different algorithms in GBLSSL and our model, Semi-Supervised Sparse Autoencoder}
+    \label{table:timitssl}
+\end{table}
+
+
+%dropping does not vary We see, that the accuracy almost remains constant, and does not vary much when the shift is from -5 to +5. But as we futher change the size of the shift, the feature will no longer have the current frame in the window, and so the accuracy drops. Further, as can be seen from the plot, when we change the value of the shift further, the accuracy starts dropping at a very fast rate in either direction of the shift. We also observe that the rate at which accuracy drops is higher when we increase the shift towards the right. Please note, that the system we propose here can not be used for real-time applications, as feature normalisation (cepstral mean and variance normalisation), and the lattice beam pruning which we use in the decoder are essentially batch processes, which can be performed only when we have the data for the whole utterance.
+
+%%% Local Variables: 
+%%% enable-local-variables: t
+%%% ispell-local-dictionary: "british"
+%%% mode: latex
+%%% TeX-master: "dnnlatency"
+%%% eval: (flyspell-mode)
+%%% eval: (flyspell-buffer)
+%%% End: 

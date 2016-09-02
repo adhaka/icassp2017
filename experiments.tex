@@ -1,0 +1,33 @@
+\section{EXPERIMENTS}
+\label{sec:experiments}
+\begin{figure*}
+\includegraphics[width=\columnwidth]{timit}
+% \includegraphics[width=\columnwidth]{mnist}
+\caption{Phoneme recognition performance as a function of the input window alignment in time. Left: phoneme error rate (PER). Right: detail on the different kind of errors. A shift of 0 corresponds to a window centered at the current frame with 5 frames right context and 5 left context. Windows with shifts above +5 or below -5 do not contain the current frame.}
+\label{fig:results}
+\end{figure*}
+
+\subsection{Experimental Setup}
+The main part of this work is the experiment on the standard TIMIT dataset~\cite{timit} for the task of frame-based phoneme classification. We used the standard core test set of 192 sentences, and a development/validation set of 184 sentences. For training, we had 3512 sentences. Similarly as a part of standard procedure of experiments on TIMIT, glottal stop segments are excluded as well. The procedure of converting raw speech waveforms to a seqeunce of multiple fixed length vectors has already been documented in Section~\ref{sec:mfcc}. \\
+
+The data is created with the help of standard recipes given in~\cite{kaldi, pdnn}. The input to our network was created by first extracting a 39-dimensional feature vectors for each frame. The feature vector is made of 12 MFCC coefficients, 1 energy coefficient, deltas and delta-deltas computed for every 10ms with an overlapping window of 20 ms. And for each frame, its feature vector is concatenated with the feature vectors of the previous 5 frames to the left, and 5 frames to the right, as a result of which the final vector has a dimension of 11x39 equal to 429.
+The total number of frames in the training set is 1068816. The validation set has 56005 frames in total, and the test set has 57919 frames. These counts are almost in line with the experiments of~\cite{liu-2013, labiak-2011}.
+For training, we used the standard phone set of 48 phones, collapsed into 39 phones for evaluation as in~\cite{lee-1989}. This means, the output layer will have 48 nodes, but at the time of evaluation, the 48 phonemes will be reduced to 39 phonemes. 
+
+We follow this procedure, as this is a standard way for experimentation in Speech recognition with TIMIT as also reported by~\cite{liu-2013}.  \\
+As with MNIST, the training set is divided into a labeled portion of dataset , and an unlabeled portion of dataset. 
+Speaker-dependent mean and variance normalization was also applied. Please note, that recently, it is more common to have senones or the hmm states of the phonemes as the target labels as in~\cite{mohamed-2009}, but to compare with other techniques in Semi-supervised learning for speech, we experimented with phonemes.
+%For our experiments, we take a $440\times 1024\times 1024\times 1024\times 1024\times 1984$ network, where the final layer is a softmax layer. As shown in \cite{Mohamed12}, we do not get any significant improvement if we have atleast 4 layered network each having at least 1024 nodes, and a context window of 11 frames.  We use this configuration for all of our experiments. We also use pre-training, one possible change we could have done here is to change the configuration of the network, when we dont have any data from the future, and all the frames of the speech are taken from the past.
+
+\subsection{Practical Setup}
+We used kaldi~\cite{kaldi} and pdnn~\cite{pdnn} for feature extraction, Theano~\cite{theano} for symbolic algebra for computing with GPUs. Kaldi is a speech recognition software written in C++, which comes with a lot of pre-built functions and recipes for splicing waveforms, and getting useful features out of the raw waveform like MFCCs, and feature-bank. The experiments were run on a Titan X Card donated by NVIDIA Corporation installed on a Ubuntu 14.04 based machine.
+
+
+%%% Local Variables: 
+%%% enable-local-variables: t
+%%% ispell-local-dictionary: "british"
+%%% mode: latex
+%%% TeX-master: "dnnlatency"
+%%% eval: (flyspell-mode)
+%%% eval: (flyspell-buffer)
+%%% End: 
